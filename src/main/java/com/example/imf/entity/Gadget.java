@@ -17,6 +17,8 @@ public class Gadget {
     @Enumerated(EnumType.STRING)
     private Status status;
 
+    private String decommissionedAt;
+
     public Gadget(){}
 
     public Gadget(String name, Status status){
@@ -44,6 +46,13 @@ public class Gadget {
         this.status = status;
     }
 
+    public String getDecommissionedAt() {
+        return decommissionedAt;
+    }
+    public void setDecommissionedAt(String decommissionedAt) {
+        this.decommissionedAt = decommissionedAt;
+    }
+
     @Override
     public String toString() {
         return "Gadget{" +
@@ -51,9 +60,5 @@ public class Gadget {
                 ", name='" + name + '\'' +
                 ", status=" + status +
                 '}';    }
-
-    enum Status {
-        AVAILABLE, DEPLOYED, DESTROYED, DECOMMISSIONED
-    }
 
 }
