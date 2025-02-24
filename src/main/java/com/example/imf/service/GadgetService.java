@@ -15,7 +15,7 @@ import java.util.UUID;
 public class GadgetService {
 
     private final GadgetRepository gadgetRepository;
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public GadgetService(GadgetRepository gadgetRepository){
         this.gadgetRepository = gadgetRepository;
@@ -54,6 +54,18 @@ public class GadgetService {
             gadgetRepository.save(g);
         });
         return gadget;
+    }
+
+    public List<Gadget> getGadgetsByStatus(Status status) {
+        if (status == null) {
+            return gadgetRepository.findAll();
+        }
+
+        try {
+            return gadgetRepository.findByStatus(status);
+        } catch (IllegalArgumentException e) {
+            throw new IllegalArgumentException("Invalid status: " + status);
+        }
     }
 
     private String generateCodeName() {

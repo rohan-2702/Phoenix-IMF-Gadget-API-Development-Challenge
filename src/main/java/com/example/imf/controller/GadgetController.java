@@ -32,16 +32,13 @@ public class GadgetController {
         return gadgetService.addGadget();
     }
 
-    @PatchMapping("/{id}")
-    public Optional<Gadget> updateGadget(@PathVariable UUID id,
-                                         @RequestParam String newName,
-                                         @RequestParam Status newStatus){
-        return gadgetService.updateGadget(id, newName, newStatus);
-    }
-
-    @DeleteMapping("/{id}")
-    public Optional<Gadget> deleteGadget(@PathVariable UUID id){
-        return gadgetService.deleteGadget(id);
+    @GetMapping("/status")
+    public ResponseEntity<List<Gadget>> getGadgetByStatus(@RequestParam(required = false) Status status) {
+        try {
+            return ResponseEntity.ok(gadgetService.getGadgetsByStatus(status));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Collections.emptyList()); // Return an empty list on bad request
+        }
     }
 
     @PostMapping("/{id}/self-destruct")
@@ -60,6 +57,19 @@ public class GadgetController {
         return ResponseEntity.ok(Map.of(
                 "message", "Self-destruct sequence initiated",
                 "confirmation_code", confirmationCode
-                ));
+        ));
     }
+
+    @PatchMapping("/{id}")
+    public Optional<Gadget> updateGadget(@PathVariable UUID id,
+                                         @RequestParam String newName,
+                                         @RequestParam Status newStatus){
+        return gadgetService.updateGadget(id, newName, newStatus);
+    }
+
+    @DeleteMapping("/{id}")
+    public Optional<Gadget> deleteGadget(@PathVariable UUID id){
+        return gadgetService.deleteGadget(id);
+    }
+
 }
