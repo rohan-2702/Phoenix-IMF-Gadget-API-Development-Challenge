@@ -3,6 +3,7 @@ package com.example.imf.service;
 import com.example.imf.entity.Gadget;
 import com.example.imf.entity.Status;
 import com.example.imf.repository.GadgetRepository;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -10,6 +11,7 @@ import java.util.Optional;
 import java.util.Random;
 import java.util.UUID;
 
+@Service
 public class GadgetService {
 
     private final GadgetRepository gadgetRepository;
