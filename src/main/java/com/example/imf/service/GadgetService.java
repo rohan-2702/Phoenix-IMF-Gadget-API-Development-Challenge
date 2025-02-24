@@ -54,8 +54,14 @@ public class GadgetService {
         return gadget;
     }
 
-    private String generateCodeName(){
-        String[] codenames = {" The Nightingale", "The Kraken", "Ghost Falcon", "Iron Hawk"};
+    private String generateCodeName() {
+        String[] codenames = {
+                "The Nightingale", "The Kraken", "Ghost Falcon", "Iron Hawk", "Shadow Serpent",
+                "Phantom Stingray", "Cyber Scorpion", "Quantum Dagger", "Echo Viper", "Obsidian Phantom",
+                "Storm Cyclone", "Thunder Mantis", "Stealth Wraith", "Venom Widow", "Omega Python",
+                "Crimson Harbinger", "Neon Lynx", "Solar Falcon", "Void Specter", "Eclipse Raven",
+                "Nano Phantom", "Titan Banshee", "Sonic Mirage", "Arctic Wolf", "Midnight Cobra"
+        };
         return codenames[random.nextInt(codenames.length)];
     }
 }

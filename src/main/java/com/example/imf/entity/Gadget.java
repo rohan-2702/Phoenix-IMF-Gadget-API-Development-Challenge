@@ -59,6 +59,11 @@ public class Gadget {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", status=" + status +
-                '}';    }
+                '}';
+    }
+
+
+
+
 
 }
